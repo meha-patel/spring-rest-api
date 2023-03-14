@@ -65,6 +65,7 @@ public class EmployeeController {
     // http://localhost:8080/employees?id=1
     @DeleteMapping("/employees")
     public ResponseEntity<HttpStatus> deleteEmployee(@RequestParam Long id) {
+        employeeService.deleteEmployee(id);
         return new ResponseEntity<HttpStatus>(HttpStatus.NO_CONTENT);
     }
 }

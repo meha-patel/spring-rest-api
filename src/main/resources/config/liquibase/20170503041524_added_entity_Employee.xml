@@ -20,7 +20,7 @@
             <column name="location" type="VARCHAR(255)"/>
             <column name="email" type="VARCHAR(255)"/>
             <column name="department" type="VARCHAR(255)">
-                <constraints nullable="false" primaryKey="true" unique="true"/>
+                <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="created_at" type="TIMESTAMP"/>
             <column name="updated_at" type="TIMESTAMP"/>
