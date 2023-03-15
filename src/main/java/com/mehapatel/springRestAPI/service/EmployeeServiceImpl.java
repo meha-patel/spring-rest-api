@@ -3,6 +3,9 @@ package com.mehapatel.springRestAPI.service;
 import com.mehapatel.springRestAPI.model.Employee;
 import com.mehapatel.springRestAPI.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,9 +56,35 @@ public class EmployeeServiceImpl implements EmployeeService {
         return eRepository.save(employee);
     }
 
+//    @Override
+//    public List<Employee> getEmployeesByName(String name) {
+//        return eRepository.findByName(name);
+//    }
+
+//    @Override
+//    public List<Employee> getEmployeesByNameAndLocation(String name, String location) {
+//        return eRepository.findByNameAndLocation(name, location);
+//    }
+
+//    @Override
+//    public List<Employee> getEmployeesByKeyword(String name) {
+//        Sort sort = Sort.by(Sort.Direction.ASC, "id");
+//        return eRepository.findByNameContaining(name, sort);
+//    }
+
+//    @Override
+//    public List<Employee> getEmployeesByNameOrLocation(String name, String location) {
+//        return eRepository.getEmployeesByNameOrLocation(name, location);
+//    }
+
+//    @Override
+//    public Integer deleteByEmployeeName(String name) {
+//        return eRepository.deleteByEmployeeName(name);
+//    }
+
     @Override
-    public List<Employee> getEmployeeList() {
-//        eRepository.findAllByD
-        return eRepository.findAll();
+    public List<Employee> getEmployeeList(int pageNumber, int pageSize) {
+        Pageable pages = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC, "id");
+        return eRepository.findAll(pages).getContent();
     }
 }
